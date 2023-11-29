@@ -14,9 +14,10 @@ namespace ProyectoFinal
         public static void PantallaPrincipal()
         {
             string txt = "==================================================\n" +
-                "|| ||\n" +
+                "||                                       ||\n" +
                 "|| Sistema de Inventario \"Mi Tiendita\" ||\n" +
-                "|| ||==================================================\n" +
+                "||                                       ||\n" +
+                "==================================================\n" +
                 "|| 1. Gestionar Productos ||\n" +
                 "|| 2. Gestionar Almacenes ||\n" +
                 "|| 3. Agregar y Extraer Productos ||\n" +
@@ -43,9 +44,17 @@ namespace ProyectoFinal
             return Operaciones.getEntero("Seleccione una opción: ", txt)
         }
 
-        public static void agregarProducto ()
+        public static void PantallaAgregarProducto ()
         {
-            
+            string txt = "===== Pantalla para Agregar Producto =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del producto:[Usuario ingresa el nombre]\n" +
+                "Ingrese el precio del producto:[Usuario ingresa el precio]\n" +
+                "Ingrese la cantidad del producto:[Usuario ingresa la cantidad]\n" +
+                "--------------------------------------------------\n" +
+                "Confirmación: Producto agregado exitosamente.\n"
+                Console.Write(txt);
+
         }
 
         public static int PantallaEliminarProducto() 
