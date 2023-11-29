@@ -20,18 +20,14 @@ namespace ProyectoFinal
                 "|| 1. Gestionar Productos ||\n" +
                 "|| 2. Gestionar Almacenes ||\n" +
                 "|| 3. Agregar y Extraer Productos ||\n" +
-                "==================================================\n" +
-                "Seleccione una opción y presione Enter: ";
+                "==================================================\n";
             Console.WriteLine(txt);
             int opcion = int.Parse(Console.ReadLine());
 
-            switch (opcion)
-            {
-
-            }
-
+            return Operaciones.getEntero("Seleccione una opción y presione Enter: ", txt);
         }
-        public static void PantallaGestionarProductos()
+
+        public static int PantallaGestionarProductos()
         {
             string txt = "--------------------------------------------------" +
                 "||       Gestionar Productos - Mi Tiendita      ||" +
@@ -41,18 +37,12 @@ namespace ProyectoFinal
                 "||  3.Modificar Producto                        ||" +
                 "||  4.Mostrar Inventario                        ||" +
                 "||  5.Volver al Menú Principal                  ||" +
-                "--------------------------------------------------" +
-                "Seleccione una opción: ";
+                "--------------------------------------------------";
             Console.WriteLine(txt);
-            int opcion = int.Parse(Console.ReadLine());
-
-            switch (opcion)
-            {
-
-            }
             
-
+            return Operaciones.getEntero("Seleccione una opción: ", txt)
         }
+
         public static void agregarProducto ()
         {
             
