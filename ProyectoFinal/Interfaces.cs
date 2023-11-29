@@ -11,7 +11,7 @@ namespace ProyectoFinal
         public static string[] Producto = new string[100];
         public static int[] Precio = new int[100];
         public static int[] Cantidad = new int[100];
-        public static void PantallaPrincipal()
+        public static int PantallaPrincipal()
         {
             string txt = "==================================================\n" +
                 "||                                       ||\n" +
@@ -40,8 +40,8 @@ namespace ProyectoFinal
                 "||  5.Volver al Menú Principal                  ||" +
                 "--------------------------------------------------";
             Console.WriteLine(txt);
-            
-            return Operaciones.getEntero("Seleccione una opción: ", txt)
+
+            return Operaciones.getEntero("Seleccione una opción: ", txt);
         }
 
         public static void PantallaAgregarProducto ()
@@ -52,7 +52,7 @@ namespace ProyectoFinal
                 "Ingrese el precio del producto:[Usuario ingresa el precio]\n" +
                 "Ingrese la cantidad del producto:[Usuario ingresa la cantidad]\n" +
                 "--------------------------------------------------\n" +
-                "Confirmación: Producto agregado exitosamente.\n"
+                "Confirmación: Producto agregado exitosamente.\n";
                 Console.Write(txt);
 
         }
@@ -65,13 +65,23 @@ namespace ProyectoFinal
                 "[Usuario ingresa el nombre]"; 
             Console.Write(txt);
 
-            string txt2 = "--------------------------------------------------\n" + 
-                "Confirmación: Producto eliminado exitosamente\n" 
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Producto eliminado exitosamente\n"; 
             Console.Write(txt2);
 
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
-
+        public static int PantallaMostrarInventario()
+        {
+            string txt = "===== Pantalla para Mostrar Inventario =====\n" +
+                "--------------------------------------------------\n" +
+                "Inventario Actual:" +
+                "Producto 1: [Nombre] - Precio: $[Precio] - Cantidad: [Cantidad]\n" +
+                "Producto 2: [Nombre] - Precio: $[Precio] - Cantidad: [Cantidad]\n" +
+                "...";
+            Console.ReadLine();
+            return PantallaGestionarProductos();
+        }
     }
 }
