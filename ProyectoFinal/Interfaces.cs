@@ -56,6 +56,8 @@ namespace ProyectoFinal
         public static void agregarProducto ()
         {
             Console.Write("alonso main edgar");
+            // giaco se la come
         }
+       
     }
 }
