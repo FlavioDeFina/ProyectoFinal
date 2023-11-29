@@ -55,9 +55,24 @@ namespace ProyectoFinal
         }
         public static void agregarProducto ()
         {
-            Console.Write("alonso main edgar");
-            // giaco se la come
+            
         }
-       
+
+        public static int PantallaEliminarProducto() 
+        { 
+            string txt = "===== Pantalla para Eliminar Producto =====\n" + 
+                "--------------------------------------------------\n" + 
+                "Ingrese el nombre del producto a eliminar: \n" +
+                "[Usuario ingresa el nombre]"; 
+            Console.Write(txt);
+
+            string txt2 = "--------------------------------------------------\n" + 
+                "Confirmación: Producto eliminado exitosamente\n" 
+            Console.Write(txt2);
+
+            Console.ReadLine();
+            return PantallaGestionarProductos();
+        }
+
     }
 }
