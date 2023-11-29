@@ -31,5 +31,27 @@ namespace ProyectoFinal
             }
 
         }
+
+        public static void PantallaGestionarProductos()
+        {
+            string txt = "--------------------------------------------------" +
+                "||       Gestionar Productos - Mi Tiendita      ||" +
+                "--------------------------------------------------" +
+                "||  1.Agregar Producto                          ||" +
+                "||  2.Eliminar Producto                         ||" +
+                "||  3.Modificar Producto                        ||" +
+                "||  4.Mostrar Inventario                        ||" +
+                "||  5.Volver al Menú Principal                  ||" +
+                "--------------------------------------------------" +
+                "Seleccione una opción: ";
+            Console.WriteLine(txt);
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+
+            }
+
+        }
     }
 }
