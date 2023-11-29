@@ -44,7 +44,7 @@ namespace ProyectoFinal
             return Operaciones.getEntero("Seleccione una opción: ", txt);
         }
 
-        public static void PantallaAgregarProducto ()
+        public static void PantallaAgregarProducto()
         {
             string txt = "===== Pantalla para Agregar Producto =====\n" +
                 "--------------------------------------------------\n" +
