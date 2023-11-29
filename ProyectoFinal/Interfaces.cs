@@ -72,6 +72,20 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
+        public static void PantallaModificarProducto()
+        {
+            string txt = "===== Pantalla para Modificar Producto =====" +
+                "--------------------------------------------------" +
+                "Ingrese el nombre del producto a modificar:" +
+                "[Usuario ingresa el nombre]" +
+                "Ingrese el nuevo precio:" +
+                "[Usuario ingresa el nuevo precio]" +
+                "Ingrese la nueva cantidad:" +
+                "[Usuario ingresa la nueva cantidad]" +
+                "--------------------------------------------------" +
+                "Confirmación: Producto modificado exitosamente.";
+            Console.WriteLine(txt);
+        }
         public static int PantallaMostrarInventario()
         {
             string txt = "===== Pantalla para Mostrar Inventario =====\n" +
