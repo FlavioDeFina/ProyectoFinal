@@ -50,7 +50,12 @@ namespace ProyectoFinal
             {
 
             }
+            
 
+        }
+        public static void agregarProducto ()
+        {
+            Console.Write("alonso main edgar");
         }
     }
 }
