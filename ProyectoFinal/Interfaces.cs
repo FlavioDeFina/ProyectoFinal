@@ -31,7 +31,6 @@ namespace ProyectoFinal
             }
 
         }
-
         public static void PantallaGestionarProductos()
         {
             string txt = "--------------------------------------------------" +
