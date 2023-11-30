@@ -11,6 +11,8 @@ namespace ProyectoFinal
         public static string[] Producto = new string[100];
         public static int[] Precio = new int[100];
         public static int[] Cantidad = new int[100];
+        public static string[] Almacen = new string[100];
+        public static int contador = 0;
         public static int PantallaPrincipal()
         {
             string txt = "==================================================\n" +
@@ -110,6 +112,59 @@ namespace ProyectoFinal
             Console.Write(txt);
 
             return Operaciones.getEntero("Seleccione una opción: ", txt);
+        }
+        public static int PantallaGestionarAlmacenes()
+        {
+            Console.Clear();
+            string txt = "--------------------------------------------------\n" +
+                " Gestionar Almacenes - Mi Tiendita \n" +
+                "--------------------------------------------------\n" +
+                " 1. Agregar Almacén \n" +
+                " 2. Eliminar Almacén \n" +
+                " 3. Mostrar Almacenes \n" +
+                " 4. Volver al Menú Principal \n" +
+                "--------------------------------------------------\n";
+            Console.Write(txt);
+
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    PantallaAgregarAlmacen();
+                    break;
+                case 2:
+                    PantallaEliminarAlmacen();
+                    break;
+                case 3:
+                    PantallaMostrarAlmacenes();
+                    break;
+                case 4:
+                    PantallaPrincipal();
+                    break;
+            }
+            return opcion;
+        }
+        public static int PantallaMostrarAlmacenes()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Mostrar Almacenes =====\n" +
+                "--------------------------------------------------\n" +
+                "Lista de Almacenes:\n";
+            Console.Write(txt);
+
+            if (contador == 0)
+            {
+                Console.WriteLine("No se registro ningún Almacen");
+            }
+
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine("Almacén " + (i + 1) + ": " + Almacen[i]);
+            }
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
         }
     }
 }
