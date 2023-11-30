@@ -274,5 +274,13 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarAlmacenes();
         }
+        public static int Pantallao()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Mostrar Inventario =====\n" +
+                "--------------------------------------------------\n" +
+                "Inventario Actual: \n";
+            Console.Write(txt);
+        }
     }
 }
