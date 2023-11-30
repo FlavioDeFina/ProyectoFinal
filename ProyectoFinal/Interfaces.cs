@@ -222,5 +222,63 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarAlmacenes();
         }
+        public static int PantallaEliminarAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Eliminar Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del almacén a eliminar: ";
+            Console.Write(txt);
+
+            string nombreAEliminar = Console.ReadLine();
+
+            int indiceAEliminar = -1;
+
+            for (int i = 0; i < contador; i++)
+            {
+                if (Almacen[i] == nombreAEliminar)
+                {
+                    indiceAEliminar = i;
+                }
+            }
+
+            if (indiceAEliminar != -1)
+            {
+                for (int i = indiceAEliminar; i < contador - 1; i++)
+                {
+                    Almacen[i] = Almacen[i + 1];
+                }
+                contador--;
+            }
+
+            string txt2 = "--------------------------------------------------\n" +
+            "Confirmación: Almacén eliminado exitosamente. \n";
+            Console.Write(txt2);
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
+        }
+
+        public static int PantallaMostrarAlmacenes()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Mostrar Almacenes =====\n" +
+                "--------------------------------------------------\n" +
+                "Lista de Almacenes:\n";
+            Console.Write(txt);
+
+            if (contadorAL == 0)
+            {
+                Console.WriteLine("No se registro ningún Almacen");
+            }
+
+            for (int i = 0; i < contadorAL; i++)
+            {
+                Console.WriteLine("Almacén " + (i + 1) + ": " + Almacen[i]);
+            }
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
+        }
     }
 }
