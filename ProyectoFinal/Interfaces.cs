@@ -152,15 +152,25 @@ namespace ProyectoFinal
         }
         public static int PantallaMostrarInventario()
         {
+            Console.Clear();
             string txt = "===== Pantalla para Mostrar Inventario =====\n" +
                 "--------------------------------------------------\n" +
-                "Inventario Actual:" +
-                "Producto 1: [Nombre] - Precio: $[Precio] - Cantidad: [Cantidad]\n" +
-                "Producto 2: [Nombre] - Precio: $[Precio] - Cantidad: [Cantidad]\n" +
-                "...";
+                "Inventario Actual: \n";
+            Console.Write(txt);
+
+            if (contador == 0)
+            {
+                Console.WriteLine("No existe inventario");
+            }
+
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine("Producto " + (i + 1) + ": " + Producto[i] + " - Precio: " + Precio[i] + " - Cantidad: " + Cantidad[i]);
+            }
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
+
         public static int PantallaAgregaryExtraerProductos()
         {
             string txt = "--------------------------------------------------\n" +
