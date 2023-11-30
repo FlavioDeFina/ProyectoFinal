@@ -97,5 +97,19 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
+        public static int PantallaAgregaryExtraerProductos()
+        {
+            string txt = "--------------------------------------------------\n" +
+                "|| Agregar y Extraer Productos - Mi Tiendita ||" +
+                "--------------------------------------------------" +
+                "|| 1. Ingresar Producto en Almacén ||" +
+                "|| 2. Extraer Producto de Almacén ||" +
+                "|| 3. Ver Stock Actual ||" +
+                "|| 4. Volver al Menú Principal ||" +
+                "--------------------------------------------------";
+            Console.Write(txt);
+
+            return Operaciones.getEntero("Seleccione una opción: ", txt);
+        }
     }
 }
