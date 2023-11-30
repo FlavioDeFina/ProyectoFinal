@@ -13,37 +13,61 @@ namespace ProyectoFinal
         public static int[] Cantidad = new int[100];
         public static string[] Almacen = new string[100];
         public static int contador = 0;
+
         public static int PantallaPrincipal()
         {
+            Console.Clear();
             string txt = "==================================================\n" +
-                "||                                       ||\n" +
-                "|| Sistema de Inventario \"Mi Tiendita\" ||\n" +
-                "||                                       ||\n" +
+                "||                                              ||\n" +
+                "||      Sistema de Inventario ¨Mi Tiendita¨     ||\n" +
+                "||                                              ||\n" +
                 "==================================================\n" +
-                "|| 1. Gestionar Productos ||\n" +
-                "|| 2. Gestionar Almacenes ||\n" +
-                "|| 3. Agregar y Extraer Productos ||\n" +
+                "|| 1. Gestionar Productos                       ||\n" +
+                "|| 2. Gestionar Almacenes                       ||\n" +
+                "|| 3. Agregar y Extraer Productos               ||\n" +
                 "==================================================\n";
             Console.WriteLine(txt);
-            int opcion = int.Parse(Console.ReadLine());
 
             return Operaciones.getEntero("Seleccione una opción y presione Enter: ", txt);
         }
 
+
         public static int PantallaGestionarProductos()
         {
-            string txt = "--------------------------------------------------" +
-                "||       Gestionar Productos - Mi Tiendita      ||" +
-                "--------------------------------------------------" +
-                "||  1.Agregar Producto                          ||" +
-                "||  2.Eliminar Producto                         ||" +
-                "||  3.Modificar Producto                        ||" +
-                "||  4.Mostrar Inventario                        ||" +
-                "||  5.Volver al Menú Principal                  ||" +
-                "--------------------------------------------------";
+            Console.Clear();
+            string txt = "--------------------------------------------------\n" +
+                "||       Gestionar Productos - Mi Tiendita      ||\n" +
+                "--------------------------------------------------\n" +
+                "||  1.Agregar Producto                          ||\n" +
+                "||  2.Eliminar Producto                         ||\n" +
+                "||  3.Modificar Producto                        ||\n" +
+                "||  4.Mostrar Inventario                        ||\n" +
+                "||  5.Volver al Menú Principal                  ||\n" +
+                "--------------------------------------------------\n" +
+                "Seleccione una opción: ";
             Console.WriteLine(txt);
 
-            return Operaciones.getEntero("Seleccione una opción: ", txt);
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    PantallaAgregarProducto();
+                    break;
+                case 2:
+                    PantallaEliminarProducto();
+                    break;
+                case 3:
+                    PantallaModificarProducto();
+                    break;
+                case 4:
+                    PantallaMostrarInventario();
+                    break;
+                case 5:
+                    PantallaPrincipal();
+                    break;
+            }
+            return opcion;
         }
 
         public static void PantallaAgregarProducto()
@@ -145,6 +169,42 @@ namespace ProyectoFinal
             }
             return opcion;
         }
+
+        public static int PantallaAgregarAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Agregar Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del nuevo almacén: ";
+            Console.Write(txt);
+
+            string nombreAlmacen = Console.ReadLine();
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Almacén agregado exitosamente. \n";
+            Console.Write(txt2);
+
+            Almacen[contador] = nombreAlmacen;
+            contador++;
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
+        }
+
+        public static int PantallaEliminarAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Eliminar Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del almacén a eliminar:[Usuario ingresa el nombre]\n" +
+                "--------------------------------------------------\n" +
+                "Confirmación: Almacén eliminado exitosamente. \n";
+            Console.Write(txt);
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
+        }
+
         public static int PantallaMostrarAlmacenes()
         {
             Console.Clear();
