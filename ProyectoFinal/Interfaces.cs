@@ -58,6 +58,7 @@ namespace ProyectoFinal
 
             return opcion;
         }
+
         public static int PantallaAgregarProducto()
         {
             Console.Clear();
@@ -121,6 +122,59 @@ namespace ProyectoFinal
                 "Confirmación: Producto eliminado exitosamente\n";
             Console.Write(txt2);
 
+            Console.ReadLine();
+            return PantallaGestionarProductos();
+        }
+
+        public static int PantallaModificarProducto()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Modificar Producto =====\n" +
+             "--------------------------------------------------\n" +
+             "Ingrese el nombre del producto a modificar: ";
+            Console.Write(txt);
+
+            string product = Console.ReadLine();
+            float nuevoPrecio = Operaciones.getDecimal("Ingrese el nuevo precio: ", txt);
+            int nuevaCantidad = Operaciones.getEntero("Ingrese la nueva cantidad: ", txt);
+
+            int posicion = 0;
+            for (int i = 0; i < contador; i++)
+            {
+                if (Producto[i] == product)
+                {
+                    posicion = i;
+
+                    Precio[posicion] = nuevoPrecio;
+                    Cantidad[posicion] = nuevaCantidad;
+                }
+            }
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Producto modificado exitosamente.";
+            Console.Write(txt2);
+
+            Console.ReadLine();
+            return PantallaGestionarProductos();
+        }
+
+        public static int PantallaMostrarInventario()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Mostrar Inventario =====\n" +
+                "--------------------------------------------------\n" +
+                "Inventario Actual: \n";
+            Console.Write(txt);
+
+            if (contador == 0)
+            {
+                Console.WriteLine("No existe inventario");
+            }
+
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine("Producto " + (i + 1) + ": " + Producto[i] + " - Precio: " + Precio[i] + " - Cantidad: " + Cantidad[i]);
+            }
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
