@@ -30,7 +30,7 @@ namespace ProyectoFinal
 
             return Operaciones.getEntero("Seleccione una opción y presione Enter: ", txt);
         }
-
+        //comentario de mafer//
 
         public static int PantallaGestionarProductos()
         {
