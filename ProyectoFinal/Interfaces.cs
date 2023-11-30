@@ -178,5 +178,49 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarProductos();
         }
+        public static int PantallaGestionarAlmacenes()
+        {
+            Console.Clear();
+            string txt = "--------------------------------------------------\n" +
+                " Gestionar Almacenes - Mi Tiendita \n" +
+                "--------------------------------------------------\n" +
+                " 1. Agregar Almacén \n" +
+                " 2. Eliminar Almacén \n" +
+                " 3. Mostrar Almacenes \n" +
+                " 4. Volver al Menú Principal \n" +
+                "--------------------------------------------------\n" +
+                "Seleccione una opción: ";
+            Console.Write(txt);
+
+            int opcion = int.Parse(Console.ReadLine());
+
+            if (opcion == 1) return PantallaAgregarAlmacen();
+            if (opcion == 2) return PantallaEliminarAlmacen();
+            if (opcion == 3) return PantallaMostrarAlmacenes();
+            if (opcion == 4) return PantallaPrincipal();
+            return opcion;
+        }
+
+        public static int PantallaAgregarAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Agregar Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Ingrese el nombre del nuevo almacén: ";
+            Console.Write(txt);
+
+            string nombreAlmacen = Console.ReadLine();
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Almacén agregado exitosamente. \n";
+            Console.Write(txt2);
+
+
+            Almacen[contadorAL] = nombreAlmacen;
+            contadorAL++;
+
+            Console.ReadLine();
+            return PantallaGestionarAlmacenes();
+        }
     }
 }
