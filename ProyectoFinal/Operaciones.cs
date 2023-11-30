@@ -30,7 +30,7 @@ namespace ProyectoFinal
             return respuesta;
         }
 
-        public static float getDecimal(string prefijo)
+        public static float getDecimal(string prefijo, string remplazo)
         {
             float respuesta = 0;
             bool correcto = false;

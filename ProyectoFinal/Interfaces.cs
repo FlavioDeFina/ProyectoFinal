@@ -9,7 +9,7 @@ namespace ProyectoFinal
     internal class Interfaces
     {
         public static string[] Producto = new string[100];
-        public static int[] Precio = new int[100];
+        public static float[] Precio = new float[100];
         public static int[] Cantidad = new int[100];
         public static string[] Almacen = new string[100];
         public static int contador = 0;
@@ -70,29 +70,67 @@ namespace ProyectoFinal
             return opcion;
         }
 
-        public static void PantallaAgregarProducto()
+        public static int PantallaAgregarProducto()
         {
+            Console.Clear();
             string txt = "===== Pantalla para Agregar Producto =====\n" +
                 "--------------------------------------------------\n" +
-                "Ingrese el nombre del producto:[Usuario ingresa el nombre]\n" +
-                "Ingrese el precio del producto:[Usuario ingresa el precio]\n" +
-                "Ingrese la cantidad del producto:[Usuario ingresa la cantidad]\n" +
-                "--------------------------------------------------\n" +
-                "Confirmación: Producto agregado exitosamente.\n";
-                Console.Write(txt);
-
-        }
-
-        public static int PantallaEliminarProducto() 
-        { 
-            string txt = "===== Pantalla para Eliminar Producto =====\n" + 
-                "--------------------------------------------------\n" + 
-                "Ingrese el nombre del producto a eliminar: \n" +
-                "[Usuario ingresa el nombre]"; 
+                "Ingrese el nombre del producto:  ";
             Console.Write(txt);
 
+            string nombreProducto = Console.ReadLine();
+
+            float precioProducto = Operaciones.getDecimal("Ingrese el precio del producto: ", txt);
+
+            int cantidadProducto = Operaciones.getEntero("Ingrese la cantidad del producto: ", txt);
+
             string txt2 = "--------------------------------------------------\n" +
-                "Confirmación: Producto eliminado exitosamente\n"; 
+                "Confirmación: Producto agregado exitosamente.\n";
+            Console.Write(txt2);
+
+            Producto[contador] = nombreProducto;
+            Precio[contador] = precioProducto;
+            Cantidad[contador] = cantidadProducto;
+            contador++;
+
+            Console.ReadLine();
+
+            return PantallaGestionarProductos();
+        }
+
+        public static int PantallaEliminarProducto()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Eliminar Producto =====\n" +
+                 "--------------------------------------------------\n" +
+                 "Ingrese el nombre del producto a eliminar: ";
+            Console.Write(txt);
+
+            string elementoAEliminar = Console.ReadLine();
+
+            int indiceAEliminar = -1;
+            for (int i = 0; i < contador; i++)
+            {
+                if (Producto[i] == elementoAEliminar)
+                {
+                    indiceAEliminar = i;
+                }
+            }
+
+            if (indiceAEliminar != -1)
+            {
+                for (int i = indiceAEliminar; i < contador - 1; i++)
+                {
+                    Producto[i] = Producto[i + 1];
+                    Precio[i] = Precio[i + 1];
+                    Cantidad[i] = Cantidad[i + 1];
+                }
+
+                contador--;
+            }
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Producto eliminado exitosamente\n";
             Console.Write(txt2);
 
             Console.ReadLine();
