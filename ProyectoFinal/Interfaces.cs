@@ -14,6 +14,8 @@ namespace ProyectoFinal
         public static int[] Cantidad = new int[100];
         public static int contador = 0;
         public static int contadorAL = 0;
+        public static int contadorEX = 0;
+        public static int[] CantidadAlmacen = new int[100];
 
         public static string[] Almacen = new string[100];
 
@@ -279,6 +281,77 @@ namespace ProyectoFinal
 
             Console.ReadLine();
             return PantallaGestionarAlmacenes();
+        }
+        public static int PantallaAgregaryExtraerProductos()
+        {
+            Console.Clear();
+            string txt = "--------------------------------------------------\n" +
+                " Agregar y Extraer Productos - Mi Tiendita \n" +
+                "--------------------------------------------------\n" +
+                " 1. Ingresar Producto en Almacén \n" +
+                " 2. Extraer Producto de Almacén \n" +
+                " 3. Ver Stock Actual \n" +
+                " 4. Volver al Menú Principal \n" +
+                "--------------------------------------------------\n" +
+                "Seleccione una opción: ";
+            Console.Write(txt);
+
+            int opcion = int.Parse(Console.ReadLine());
+
+            if (opcion == 1) return PantallaIngresarProductoAlmacen();
+            if (opcion == 2) return PantallaExtraerAlmacen();
+            if (opcion == 3) return PantallaMostrarStock();
+            if (opcion == 4) return PantallaPrincipal();
+            return opcion;
+        }
+        public static int PantallaIngresarProductoAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Ingresar Producto en Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Seleccione el almacén: \n";
+
+            for (int i = 0; i < contadorAL; i++)
+            {
+                txt += ((i + 1) + ". " + Almacen[i] + "\n");
+            }
+
+            Console.WriteLine(txt);
+
+            int seleccionAlmacen = Operaciones.getEntero("Seleccione el número del almacén y presione Enter: ", txt) - 1;
+
+            if (seleccionAlmacen < 0 || seleccionAlmacen >= contadorAL)
+    {
+                Console.WriteLine("Selección de almacén inválida.");
+                Console.ReadLine();
+                return PantallaAgregaryExtraerProductos();
+            }
+
+            Console.WriteLine("\nLista de Productos: ");
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + Producto[i]);
+            }
+
+            int seleccionProducto = Operaciones.getEntero("\nSeleccione el número del producto y presione Enter: ", "Lista de Productos") - 1;
+
+            if (seleccionProducto < 0 || seleccionProducto >= contador)
+            {
+                Console.WriteLine("Selección de producto inválida.");
+                Console.ReadLine();
+                return PantallaAgregaryExtraerProductos();
+            }
+
+            int cantidadIngresar = Operaciones.getEntero("\nIngrese la cantidad a ingresar: ", "Cantidad a Ingresar");
+
+            CantidadAlmacen[contadorEX] = cantidadIngresar;
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Producto ingresado en el almacén exitosamente.";
+            Console.Write(txt2);
+
+            Console.ReadLine();
+            return PantallaAgregaryExtraerProductos();
         }
     }
 }
