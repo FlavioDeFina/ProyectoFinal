@@ -52,6 +52,14 @@ namespace ProyectoFinal
 
             int opcion = int.Parse(Console.ReadLine());
 
+            while (opcion < 1 || opcion > 5)
+            {
+                Console.WriteLine("Opción inválida. Ingrese un número válido.");
+                Console.Beep();
+                Console.ReadLine();
+                return PantallaGestionarProductos();
+            }
+
             if (opcion == 1) return PantallaAgregarProducto();
             if (opcion == 2) return PantallaEliminarProducto();
             if (opcion == 3) return PantallaModificarProducto();
@@ -196,6 +204,14 @@ namespace ProyectoFinal
 
             int opcion = int.Parse(Console.ReadLine());
 
+            while (opcion < 1 || opcion > 4)
+            {
+                Console.WriteLine("Opción inválida. Ingrese un número válido.");
+                Console.Beep();
+                Console.ReadLine();
+                return PantallaGestionarAlmacenes();
+            }
+
             if (opcion == 1) return PantallaAgregarAlmacen();
             if (opcion == 2) return PantallaEliminarAlmacen();
             if (opcion == 3) return PantallaMostrarAlmacenes();
@@ -298,6 +314,14 @@ namespace ProyectoFinal
 
             int opcion = int.Parse(Console.ReadLine());
 
+            while (opcion < 1 || opcion > 4)
+            {
+                Console.WriteLine("Opción inválida. Ingrese un número válido.");
+                Console.Beep();
+                Console.ReadLine();
+                return PantallaAgregaryExtraerProductos();
+            }
+
             if (opcion == 1) return PantallaIngresarProductoAlmacen();
             if (opcion == 2) return PantallaExtraerAlmacen();
             if (opcion == 3) return PantallaMostrarStock();
@@ -350,6 +374,106 @@ namespace ProyectoFinal
                 "Confirmación: Producto ingresado en el almacén exitosamente.";
             Console.Write(txt2);
 
+            Console.ReadLine();
+            return PantallaAgregaryExtraerProductos();
+        }
+
+        public static int PantallaExtraerAlmacen()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Extraer Producto de Almacén =====\n" +
+                "--------------------------------------------------\n" +
+                "Seleccione el almacén: \n";
+
+            for (int i = 0; i < contadorAL; i++)
+            {
+                txt += (i + 1) + ". " + Almacen[i] + "\n";
+            }
+
+            Console.WriteLine(txt);
+
+            int seleccionAlmacen = Operaciones.getEntero("Seleccione el número del almacén y presione Enter: ", txt) - 1;
+
+            if (seleccionAlmacen < 0 || seleccionAlmacen >= contadorAL)
+            {
+                Console.WriteLine("Selección de almacén inválida.");
+                Console.ReadLine();
+                return PantallaAgregaryExtraerProductos();
+            }
+
+            Console.WriteLine("\nLista de Productos: ");
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + Producto[i]);
+            }
+
+            int seleccionProducto = Operaciones.getEntero("\nSeleccione el número del producto y presione Enter: ", "Lista de Productos") - 1;
+
+            if (seleccionProducto < 0 || seleccionProducto >= contador)
+            {
+                Console.WriteLine("Selección de producto inválida.");
+                Console.ReadLine();
+                return PantallaAgregaryExtraerProductos();
+            }
+
+            int cantidadExtraer = Operaciones.getEntero("\nIngrese la cantidad a extraer: ", "Cantidad a Extraer");
+
+            int posicion = 0;
+            for (int i = 0; i < contador; i++)
+            {
+                if (Producto[i] == Producto[seleccionProducto])
+                {
+                    posicion = i;
+                    CantidadAlmacen[posicion] -= cantidadExtraer;
+                }
+            }
+
+            string txt2 = "--------------------------------------------------\n" +
+                "Confirmación: Producto extraído del almacén exitosamente.";
+            Console.Write(txt2);
+
+            Console.ReadLine();
+            return PantallaAgregaryExtraerProductos();
+        }
+
+        public static int PantallaMostrarStock()
+        {
+            Console.Clear();
+            string txt = "===== Pantalla para Ver Stock Actual =====\n" +
+                "--------------------------------------------------\n" +
+                "Stock Actual en Todos los Almacenes: \n";
+            Console.Write(txt);
+
+            int contadorProducto = 1;
+
+            for (int i = 0; i < contadorAL; i++)
+            {
+                Console.WriteLine("Almacén: " + Almacen[i]);
+
+                for (int j = 0; j < contador; j++)
+                {
+                    int posicion = -1;
+
+                    for (int k = 0; k < contador; k++)
+                    {
+                        if (Producto[j] == Producto[k])
+                        {
+                            posicion = k;
+                            break;
+                        }
+                    }
+
+                    if (Almacen[i] == Almacen[j])
+                    {
+                        string cantidadProducto = (posicion != -1) ? CantidadAlmacen[posicion].ToString() : "0";
+
+                        Console.WriteLine("  Producto " + contadorProducto + ": " + Producto[j] + " - Almacén: " + Almacen[i] + " - Cantidad: " + cantidadProducto);
+                        contadorProducto++;
+                    }
+                }
+            }
+
+            Console.WriteLine("--------------------------------------------------");
             Console.ReadLine();
             return PantallaAgregaryExtraerProductos();
         }
