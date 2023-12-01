@@ -240,6 +240,7 @@ namespace ProyectoFinal
             Console.ReadLine();
             return PantallaGestionarAlmacenes();
         }
+
         public static int PantallaEliminarAlmacen()
         {
             Console.Clear();
@@ -252,7 +253,7 @@ namespace ProyectoFinal
 
             int indiceAEliminar = -1;
 
-            for (int i = 0; i < contador; i++)
+            for (int i = 0; i < contadorAL; i++)
             {
                 if (Almacen[i] == nombreAEliminar)
                 {
@@ -262,11 +263,11 @@ namespace ProyectoFinal
 
             if (indiceAEliminar != -1)
             {
-                for (int i = indiceAEliminar; i < contador - 1; i++)
+                for (int i = indiceAEliminar; i < contadorAL - 1; i++)
                 {
                     Almacen[i] = Almacen[i + 1];
                 }
-                contador--;
+                contadorAL--;
             }
 
             string txt2 = "--------------------------------------------------\n" +
